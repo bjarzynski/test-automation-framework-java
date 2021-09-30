@@ -4,6 +4,7 @@
 
 # User-specific stuff
 .idea/**/workspace.xml
+.idea/uiDesigner.xml
 
 # Gradle
 .idea/**/gradle.xml
@@ -23,3 +24,12 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
+### SonarLint ###
+.idea/sonarlint
+
+### Checkstyle ###
+.idea/codeStyles
+.idea/modules
+.idea/checkstyleidea-libs
+.idea/checkstyle-idea.xml
