@@ -1,11 +1,13 @@
-package ui;
+package base;
 
 import configuration.EnvironmentVariables;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import utils.browsers.Browser;
 import utils.browsers.DriverFactory;
 
+@Listeners(TestListener.class)
 public class TestBase {
   protected static WebDriver driver;
 

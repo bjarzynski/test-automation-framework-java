@@ -26,10 +26,13 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 ### SonarLint ###
-.idea/sonarlint
+.idea/sonarlint/
 
 ### Checkstyle ###
-.idea/codeStyles
-.idea/modules
-.idea/checkstyleidea-libs
+.idea/codeStyles/
+.idea/modules/
+.idea/checkstyleidea-libs/
 .idea/checkstyle-idea.xml
+
+### Logs ###
+*.log
