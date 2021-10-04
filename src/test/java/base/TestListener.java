@@ -1,7 +1,7 @@
 package base;
 
+import configuration.SelenideConfiguration;
 import java.util.Arrays;
-import java.util.Set;
 import org.apache.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -51,39 +51,13 @@ public class TestListener implements ITestListener {
   @Override
   public void onStart(ITestContext context) {
     ITestListener.super.onStart(context);
+    SelenideConfiguration.setUpSelenide();
     logger.info("\n\n-------------STARTING EXECUTION-------------\n");
   }
 
   @Override
   public void onFinish(ITestContext context) {
-    logger.info(getExecutionSummary(context));
-  }
-
-  private String getExecutionSummary(ITestContext context) {
     ITestListener.super.onFinish(context);
-    StringBuilder executionSummary = new StringBuilder();
-    executionSummary.append("\n\n-------------EXECUTION FINISHED-------------\n")
-            .append("All tests: ").append(context.getAllTestMethods().length).append(", ")
-            .append("Failures: ").append(context.getFailedTests().size()).append(", ")
-            .append("Skips: ").append(context.getSkippedTests().size()).append(", ")
-            .append("Passes: ").append(context.getPassedTests().size());
-    if (context.getFailedTests().size() > 0) {
-      executionSummary.append("\n\nFailed tests: \n")
-              .append(getTestNamesWithParameters(context.getFailedTests().getAllResults()));
-    }
-    if (context.getSkippedTests().size() > 0) {
-      executionSummary.append("\nSkipped tests: ")
-              .append(getTestNamesWithParameters(context.getSkippedTests().getAllResults()));
-    }
-    return executionSummary.toString();
-  }
-
-  private String getTestNamesWithParameters(Set<ITestResult> testResultsSet) {
-    StringBuilder testNamesWithParameters = new StringBuilder();
-    testResultsSet.forEach(t -> testNamesWithParameters
-            .append(t.getMethod().getMethodName())
-            .append(Arrays.toString(t.getParameters()))
-            .append("\n"));
-    return testNamesWithParameters.toString();
+    logger.info(TestLogUtils.getExecutionSummary(context));
   }
 }
