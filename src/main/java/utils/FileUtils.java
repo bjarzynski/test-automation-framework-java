@@ -1,4 +1,4 @@
-package utils.files;
+package utils;
 
 import java.io.File;
 
@@ -14,5 +14,13 @@ public class FileUtils {
 
   public static String addToPath(String path, String newDir) {
     return path + File.separator + newDir;
+  }
+
+  public static String getDirFromProjectPath(String path) {
+    return getProjectPath() + File.separator + path;
+  }
+
+  private static String getProjectPath() {
+    return System.getProperty("user.dir");
   }
 }
